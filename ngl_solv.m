@@ -34,11 +34,6 @@ for i = 1:length(rep_strength)
     end
 end
 
-% figure
-% plot(promoter_strength, mean_enz)
-% xlabel('Promoter strength');
-% ylabel('Mean enzyme number');
-
 % Mean product number (fixed h value)
 mean_prod = []; % initialize empty vector
 rel_mp = [];
@@ -55,21 +50,6 @@ for i = 1:length(rep_strength)
         rel_mp(i,j) = mean_prod(i,j)*k/(beta*n);
     end
 end
-
-% for i = 1:length(promoter_strength)
-%     alpha = 10^1;
-%     beta = promoter_strength(i);
-%     h = h_val;
-%     n = n_val;
-%     SSE = @(mp)(k*mp/n+(k5/(alpha^h))*((k6*mp/(kcat*n))^(h+1))-beta)^2;
-%     mean_prod(i) = fminsearch(SSE, 0.1);
-%     rel_mp(i) = mean_prod(i)*k/(beta*n);
-% end
-% 
-% figure
-% loglog(promoter_strength, rel_mp)
-% xlabel('Promoter strength');
-% ylabel('Relative mean product number');
 
 % Relative product noise
 rel_noise = []; % initialize empty vector
@@ -89,7 +69,6 @@ end
 % Create figures for rel mean and rel noise
 figure 
 winter_colormap = winter(length(rep_strength));
-% yyaxis left
 
 for i = 1:length(rep_strength)
     color = winter_colormap(i, :);
@@ -107,9 +86,6 @@ ylabel('Relative product noise')
 % Figure for relative mean product number
 figure 
 winter_colormap = winter(length(rep_strength));
-
-% yyaxis right
-% hold on 
 
 for i = 1:length(rep_strength)
     color = winter_colormap(i, :);
